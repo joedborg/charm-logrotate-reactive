@@ -7,6 +7,7 @@ from charmhelpers.core.hookenv import status_set, log
 
 
 conf = Configuration()
+ready = ('active', 'Logrotate is ready.')
 
 
 @when('apt.installed.logrotate')
@@ -17,12 +18,17 @@ conf = Configuration()
 def install_logrotate() -> None:
     """
     Triggerd after all of the 
-    required packages are installed.
+    required packages are installed
+    by the apt layer.
+
+    Logrotate is added to /etc/cron.daily
+    so no scheduling is needed by the charm.
 
     :return: None
     """
-    status_set('active', 'Logrotate is ready.')
+    status_set(*ready)
     set_flag('logrotate.installed')
+
 
 @when('logrotate.installed')
 @when('config.changed')
@@ -51,3 +57,5 @@ def configure_logrotate() -> None:
         logrotate_path = '/etc/logrotate.d/{}'.format(logname)
         render_template('logrotate.tmpl', logrotate_path, tmpl_data)
         os.chmod(logrotate_path, 0o444)
+
+    status_set(*ready)
