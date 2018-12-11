@@ -1,0 +1,27 @@
+{{ path }} {
+    {{ when }}
+    {{ dateext }}
+    missingok
+    rotate {{ period }}
+    {{ compress }}
+    {% if compresscmd %}
+    compresscmd {{ compresscmd }}
+    {% endif %}
+    {% if compressext %}
+    compressext {{ compressext }}
+    {% endif %}
+    delaycompress
+    notifempty
+    create {{ perms }} {{ owner }} {{ group }}
+    sharedscripts
+    {% if postrotate %}
+    postrotate
+        {{ postrotate }}
+    endscript
+    {% endif %}
+    {% if prerotate %}
+    prerotate
+        {{ prerotate }}
+    endscript
+    {% endif %}
+}

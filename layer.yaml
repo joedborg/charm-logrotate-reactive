@@ -1,0 +1,11 @@
+repo: https://github.com/joedborg/charm-logrotate-reactive.git
+includes: 
+  - 'layer:basic'
+  - 'layer:apt'
+options:
+  apt:
+    packages:
+      - 'logrotate'
+      - 'gzip'
+      - 'bzip2'
+      - 'xz-utils'
