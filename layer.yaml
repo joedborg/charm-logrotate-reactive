@@ -9,3 +9,7 @@ options:
       - 'gzip'
       - 'bzip2'
       - 'xz-utils'
+exclude:
+  - .venv
+  - .vscode
+  - tests
