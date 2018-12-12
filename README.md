@@ -2,21 +2,6 @@
 This charm provides a simple way for charms to add log rotation or
 for an admin to rotate files not otherwise managed.
 
-# Configuration
-
-There are several settings that configure defaults:
-
-* **when** When the logs should be rotated (daily, weekly, etc.)
-* **period** How many logs we should keep before they get deleted
-* **perms** Logfile permissions (as chmod)
-* **owner** Logfile owner
-* **group** Logfile group
-* **dateext** Use dateext? (true or false)
-* **compress** Compress the logs or not (compress or nocompress)
-* **compresscmd** What command to compress with (gzip, bzip2 or xz)
-* **compressext** What file extension to use for compressed files (determined
-automatically if not set)
-
 ## Admin-Controlled Usage
 If you want to rotate un-managed files, this is what you want.
 You will still need to add a relation to one of your existing services
